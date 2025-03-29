@@ -104,11 +104,8 @@ import { useState ,useEffect} from 'react'
 // //    </div>
 // // }
 export default function Ran({ 
-    score, 
-    setScore, 
-    strike, 
+    setScore,
     setStrike, 
-    flip, 
     setFlip, 
     gameOver, 
     setGameOver,
@@ -220,8 +217,7 @@ export default function Ran({
         setFirstCard(null)}, [resetTrigger])}
         </div>
     )
-}
-// export default function Ran({ 
+}// export default function Ran({ 
 //     score, 
 //     setScore, 
 //     strike, 
