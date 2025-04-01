@@ -7,6 +7,7 @@ export default function Ran({
     setFlip, 
     gameOver, 
     setGameOver,
+    gameWon,
     resetTrigger 
 }) {    
     let a = '/photos/'
@@ -89,18 +90,18 @@ export default function Ran({
 
     return (
         <div style={{width:'90%', color:'white', backgroundColor:'black', position: 'relative'}}>
-            {gameOver && (
-                <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    fontSize: '50px',
-                    color: 'red',
-                    zIndex: 1000
-                }}>
-                    GAME OVER!
-                </div>
+           {(gameOver || gameWon) && (
+            <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                fontSize: '50px',
+                color: gameWon ? 'gold' : 'red',
+                zIndex: 1000
+            }}>
+                {gameWon ? 'YOU WON!' : 'GAME OVER!'}
+            </div>
             )}
             {cards.map((card, index) => (
                 <div 
