@@ -61,7 +61,7 @@
 // //     <img   height='70px' width='70px' style={{backgroundColor:'#043026' ,marginLeft:'150px',marginBottom:'10px'}} src={`${a+'reload.jpeg'}`} />
 // //    </div>
 // // }
-export default function Sidebar({ score, maxScore, strike, flip, onReload }){
+export default function Sidebar({ score, maxScore, strike, flip, onReload,gameWon }){
     let a='./photos/'
 
     return (
@@ -86,6 +86,16 @@ export default function Sidebar({ score, maxScore, strike, flip, onReload }){
                 src={`${a+'reload.jpeg'}`}
                 onClick={onReload}
             />
+             <div>
+                <h1 style={{
+                    backgroundColor:'#043026',
+                    color: gameWon ? 'gold' : 'white',
+                    fontSize:'50px',
+                    textAlign:'center'
+                }}>
+                    {gameWon ? 'Congratulations!' : ''}
+                </h1>
+            </div>
         </div>
     )
 }
