@@ -47,17 +47,26 @@ function App() {
   const [flip, setFlip] = useState(0)
   const [maxScore, setMaxScore] = useState(0)
   const [isGameOver, setIsGameOver] = useState(false)
+  const [isWon, setIsWon] = useState(false)
+
   const [resetTrigger, setResetTrigger] = useState(0)  // Add this line
 
   useEffect(() => {
     setMaxScore(prev => Math.max(prev, score))
   }, [score])
-
+useEffect(() => {
+    if (score === 7) { // 7 pairs matched (excluding strike cards)
+      setIsWon(true)
+      setIsGameOver(true)
+    }
+  }, [score])
   const handleReload = () => {
     setScore(0)
     setStrike(3)
     setFlip(0)
     setIsGameOver(false)
+    setIsGameOver(false)
+    setIsWon(false)
     setResetTrigger(prev => prev + 1)  // Add this line
   }
   
@@ -71,6 +80,8 @@ function App() {
         flip={flip}
         setFlip={setFlip}
         gameOver={isGameOver}
+        gameWon={isWon}
+        setGameWon={setIsWon}
         setGameOver={setIsGameOver}
         resetTrigger={resetTrigger}  // Add this line
       />
@@ -80,6 +91,7 @@ function App() {
         strike={strike}
         flip={flip}
         onReload={handleReload}
+         gameWon={isWon}
       />
     </div>
   )
